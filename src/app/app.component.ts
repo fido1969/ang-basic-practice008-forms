@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'ang-basic-practice006-routing';
+  title = 'ang-basic-practice008-forms';
 }

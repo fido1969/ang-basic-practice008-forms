@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Event } from 'src/app/model/event';
 import { EventService } from 'src/app/service/event.service';
 
@@ -10,13 +10,18 @@ import { EventService } from 'src/app/service/event.service';
 })
 export class EventsListComponent implements OnInit {
 
-  eventList: BehaviorSubject<Event[]> = this.eventService.list$;
-  testEvent: Observable<Event> = this.eventService.get(1);
+  eventList$: BehaviorSubject<Event[]> = this.eventService.list$;
 
   constructor(
     private eventService: EventService,
   ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.eventService.getAll();
+  }
+
+  onDelete(event: Event): void {
+    this.eventService.remove(event);
+  }
 
 }
